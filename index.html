@@ -210,6 +210,46 @@
     <p>&copy; 2025 Tax2Easy. All rights reserved.</p>
   </div>
 </footer>
+<!-- Login / Signup Modal -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <div class="auth-tabs">
+      <button id="loginTab" class="tab active">Login</button>
+      <button id="signupTab" class="tab">Signup</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="auth-form">
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit" class="btn">Login</button>
+      <p class="otp-text">Didn't receive OTP? <a href="#" id="resendOtpLogin">Resend</a></p>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="auth-form hidden">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Mobile Number" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit" class="btn">Signup & Get OTP</button>
+    </form>
+
+    <!-- OTP Form -->
+    <form id="otpForm" class="auth-form hidden">
+      <input type="text" maxlength="6" placeholder="Enter 6-digit OTP" required>
+      <button type="submit" class="btn">Verify OTP</button>
+      <p class="otp-text">Resend OTP in <span id="otpTimer">60</span> seconds</p>
+    </form>
+
+    <!-- Google Login -->
+    <div class="google-login">
+      <p>Or continue with</p>
+      <button class="btn google-btn">Google</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
