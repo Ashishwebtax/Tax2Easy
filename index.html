@@ -4,71 +4,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tax2Easy - File TDR, GST, Income Tax</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- CSS -->
   <style>
     /* General Reset */
-    * {margin:0;padding:0;box-sizing:border-box;font-family: 'Segoe UI', sans-serif;}
-    body {background:#f9fafb; color:#333; line-height:1.6;}
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+    body {background:#f9fafb;color:#333;line-height:1.6;}
+    a {text-decoration:none;color:inherit;}
+    ul {list-style:none;}
 
     /* Header */
-    header {display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); position:sticky; top:0; z-index:1000;}
-    header .logo img {height:50px;}
-    nav ul {display:flex; list-style:none; align-items:center;}
-    nav ul li {margin:0 15px; position:relative;}
-    nav ul li a {text-decoration:none; color:#333; font-weight:500;}
-    nav ul li:hover > ul {display:block;}
-    nav ul li ul {display:none; position:absolute; top:35px; left:0; background:white; box-shadow:0 4px 6px rgba(0,0,0,0.1); padding:10px 0; border-radius:5px; min-width:180px;}
-    nav ul li ul li {margin:0; padding:0;}
-    nav ul li ul li a {padding:10px 15px; display:block; color:#333;}
-    nav ul li ul li a:hover {background:#f0f0f0;}
+    header {display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background: rgba(255,255,255,0.95);backdrop-filter:blur(10px);position:sticky;top:0;z-index:1000;}
+    .logo img{height:50px;}
+    nav ul{display:flex;align-items:center;}
+    nav ul li{margin:0 15px;position:relative;}
+    nav ul li a{font-weight:500;}
+    nav ul li:hover>ul{display:block;}
+    nav ul li ul{display:none;position:absolute;top:35px;left:0;background:white;box-shadow:0 4px 6px rgba(0,0,0,0.1);padding:10px 0;border-radius:5px;min-width:180px;}
+    nav ul li ul li a{padding:10px 15px;display:block;}
+    nav ul li ul li a:hover{background:#f0f0f0;}
 
     /* Hero */
-    .hero {background:url('images/hero-bg.jpg') center/cover no-repeat; height:90vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:white; position:relative;}
-    .hero::after {content:""; position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5);}
-    .hero-content {position:relative; z-index:1;}
-    .hero-content h1 {font-size:3rem; margin-bottom:20px;}
-    .hero-content p {font-size:1.2rem; margin-bottom:30px;}
-    .hero-content .btn {padding:12px 25px; background:#ff6600; color:white; border:none; border-radius:5px; text-decoration:none; font-weight:600;}
-    .hero-content .btn:hover {background:#e65c00;}
+    .hero{background:url('images/hero-bg.jpg') center/cover no-repeat;height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:white;position:relative;}
+    .hero::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background: rgba(0,0,0,0.5);}
+    .hero-content{position:relative;z-index:1;}
+    .hero-content h1{font-size:3rem;margin-bottom:20px;}
+    .hero-content p{font-size:1.2rem;margin-bottom:30px;}
+    .hero-content .btn{padding:12px 25px;background:#ff6600;color:white;border:none;border-radius:5px;font-weight:600;}
+    .hero-content .btn:hover{background:#e65c00;}
 
-    /* Services Cards */
-    .services {padding:80px 20px; text-align:center; background:#f9fafb;}
-    .services h2 {margin-bottom:50px; font-size:2.5rem;}
-    .service-cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px;}
-    .service-card {background:rgba(255,255,255,0.9); backdrop-filter:blur(10px); border-radius:15px; padding:30px; transition: transform 0.3s, box-shadow 0.3s; cursor:pointer;}
-    .service-card:hover {transform:translateY(-5px); box-shadow:0 15px 30px rgba(0,0,0,0.2);}
-    .service-card img {height:80px; margin-bottom:15px;}
-    .service-card h3 {margin-bottom:10px; font-size:1.3rem;}
-    .service-card p {font-size:0.95rem; color:#555;}
+    /* Services */
+    .services{padding:80px 20px;text-align:center;background:#f9fafb;}
+    .services h2{margin-bottom:50px;font-size:2.5rem;}
+    .service-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
+    .service-card{background:rgba(255,255,255,0.9);backdrop-filter:blur(10px);border-radius:15px;padding:30px;transition: transform 0.3s, box-shadow 0.3s;cursor:pointer;}
+    .service-card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,0.2);}
+    .service-card img{height:80px;margin-bottom:15px;}
+    .service-card h3{margin-bottom:10px;font-size:1.3rem;}
+    .service-card p{font-size:0.95rem;color:#555;}
 
     /* Testimonials */
-    .testimonials {padding:80px 20px; background:#fff; text-align:center;}
-    .testimonials h2 {margin-bottom:50px; font-size:2.5rem;}
-    .testimonial-cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px;}
-    .testimonial-card {background:#f1f5f9; border-radius:15px; padding:25px; position:relative;}
-    .testimonial-card p {margin-bottom:15px; font-style:italic;}
-    .testimonial-card .stars {color:#ffb400; font-size:1.1rem;}
+    .testimonials{padding:80px 20px;background:#fff;text-align:center;}
+    .testimonials h2{margin-bottom:50px;font-size:2.5rem;}
+    .testimonial-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;}
+    .testimonial-card{background:#f1f5f9;border-radius:15px;padding:25px;position:relative;}
+    .testimonial-card p{margin-bottom:15px;font-style:italic;}
+    .testimonial-card .stars{color:#ffb400;font-size:1.1rem;}
 
     /* Pricing */
-    .pricing {padding:80px 20px; background:#f9fafb; text-align:center;}
-    .pricing h2 {margin-bottom:50px; font-size:2.5rem;}
-    .pricing-cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px;}
-    .pricing-card {background:rgba(255,255,255,0.9); backdrop-filter:blur(10px); border-radius:15px; padding:30px; transition: transform 0.3s, box-shadow 0.3s;}
-    .pricing-card:hover {transform:translateY(-5px); box-shadow:0 15px 30px rgba(0,0,0,0.2);}
-    .pricing-card h3 {margin-bottom:10px;}
-    .pricing-card p {margin-bottom:15px; color:#555;}
-    .pricing-card .price {font-size:1.8rem; margin-bottom:15px; font-weight:bold;}
-    .pricing-card .btn {padding:10px 20px; background:#ff6600; color:white; border:none; border-radius:5px; text-decoration:none; font-weight:600;}
-    .pricing-card .btn:hover {background:#e65c00;}
+    .pricing{padding:80px 20px;background:#f9fafb;text-align:center;}
+    .pricing h2{margin-bottom:50px;font-size:2.5rem;}
+    .pricing-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
+    .pricing-card{background:rgba(255,255,255,0.9);backdrop-filter:blur(10px);border-radius:15px;padding:30px;transition: transform 0.3s, box-shadow 0.3s;}
+    .pricing-card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,0.2);}
+    .pricing-card h3{margin-bottom:10px;}
+    .pricing-card p{margin-bottom:15px;color:#555;}
+    .pricing-card .price{font-size:1.8rem;margin-bottom:15px;font-weight:bold;}
+    .pricing-card .btn{padding:10px 20px;background:#ff6600;color:white;border:none;border-radius:5px;font-weight:600;}
+    .pricing-card .btn:hover{background:#e65c00;}
 
     /* Footer */
-    footer {background:#1e293b; color:white; padding:50px 20px;}
-    footer a {color:white; text-decoration:none;}
-    footer a:hover {text-decoration:underline;}
-    .footer-top, .footer-bottom {display:flex; flex-wrap:wrap; justify-content:space-between; margin-bottom:30px;}
-    .footer-section {flex:1 1 200px; margin:15px;}
-    .social-icons a {margin-right:15px; font-size:1.2rem; display:inline-block;}
+    footer{background:#1e293b;color:white;padding:50px 20px;}
+    footer a{color:white;}
+    footer a:hover{text-decoration:underline;}
+    .footer-top,.footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;margin-bottom:30px;}
+    .footer-section{flex:1 1 200px;margin:15px;}
+    .social-icons a{margin-right:15px;font-size:1.2rem;display:inline-block;}
+
+    /* Modal */
+    .modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,0.6);}
+    .modal-content{background:#fff;margin:5% auto;padding:30px;border-radius:10px;max-width:450px;position:relative;}
+    .close-btn{position:absolute;right:15px;top:15px;font-size:1.5rem;cursor:pointer;}
+    .auth-tabs{display:flex;justify-content:center;margin-bottom:20px;}
+    .auth-tabs .tab{flex:1;padding:10px;font-weight:600;border:none;background:#f0f0f0;cursor:pointer;}
+    .auth-tabs .tab.active{background:#ff6600;color:white;border-radius:5px;}
+    .auth-form{display:flex;flex-direction:column;}
+    .auth-form.hidden{display:none;}
+    .auth-form input{margin-bottom:15px;padding:10px;border:1px solid #ccc;border-radius:5px;}
+    .auth-form .btn{background:#ff6600;color:white;padding:10px;border:none;border-radius:5px;font-weight:600;cursor:pointer;}
+    .auth-form .btn:hover{background:#e65c00;}
+    .otp-text{font-size:0.9rem;color:#555;text-align:center;}
 
     /* Responsive */
     @media(max-width:768px){.hero-content h1{font-size:2.2rem;}.service-cards,.testimonial-cards,.pricing-cards{grid-template-columns:1fr;}}
@@ -78,9 +96,7 @@
 
 <!-- Header -->
 <header>
-  <div class="logo">
-    <img src="images/logo.png" alt="Tax2Easy Logo">
-  </div>
+  <div class="logo"><img src="images/logo.png" alt="Tax2Easy Logo"></div>
   <nav>
     <ul>
       <li><a href="#">Home</a></li>
@@ -93,16 +109,16 @@
           <li><a href="#">Income Tax Filing</a></li>
         </ul>
       </li>
-      <li><a href="#">Pricing</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#services">About</a></li>
       <li><a href="#">Contact</a></li>
-      <li><a href="#">Login</a></li>
-      <li><a href="#">Sign Up</a></li>
+      <li><a href="#" id="loginBtn">Login</a></li>
+      <li><a href="#" id="signupBtn">Sign Up</a></li>
     </ul>
   </nav>
 </header>
 
-<!-- Hero Section -->
+<!-- Hero -->
 <section class="hero">
   <div class="hero-content">
     <h1>Tax2Easy - Your Tax Filing Partner</h1>
@@ -210,7 +226,8 @@
     <p>&copy; 2025 Tax2Easy. All rights reserved.</p>
   </div>
 </footer>
-<!-- Login / Signup Modal -->
+
+<!-- Login/Signup Modal -->
 <div id="authModal" class="modal">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
@@ -246,11 +263,51 @@
     <!-- Google Login -->
     <div class="google-login">
       <p>Or continue with</p>
-      <button class="btn google-btn">Google</button>
+      <button class="btn google-btn"><i class="fab fa-google"></i> Google</button>
     </div>
   </div>
 </div>
 
+<!-- JS -->
+<script>
+  // Modal
+  const authModal = document.getElementById('authModal');
+  const loginBtn = document.getElementById('loginBtn');
+  const signupBtn = document.getElementById('signupBtn');
+  const closeBtn = document.querySelector('.close-btn');
+  const loginTab = document.getElementById('loginTab');
+  const signupTab = document.getElementById('signupTab');
+  const loginForm = document.getElementById('loginForm');
+  const signupForm = document.getElementById('signupForm');
+  const otpForm = document.getElementById('otpForm');
+
+  loginBtn.onclick = () => {authModal.style.display='block'; showForm('login');}
+  signupBtn.onclick = () => {authModal.style.display='block'; showForm('signup');}
+  closeBtn.onclick = () => {authModal.style.display='none';}
+
+  window.onclick = function(e){if(e.target==authModal){authModal.style.display='none';}}
+
+  loginTab.onclick = ()=> showForm('login');
+  signupTab.onclick = ()=> showForm('signup');
+
+  function showForm(form){
+    loginForm.classList.add('hidden');
+    signupForm.classList.add('hidden');
+    otpForm.classList.add('hidden');
+    loginTab.classList.remove('active');
+    signupTab.classList.remove('active');
+
+    if(form=='login'){loginForm.classList.remove('hidden'); loginTab.classList.add('active');}
+    if(form=='signup'){signupForm.classList.remove('hidden'); signupTab.classList.add('active');}
+    if(form=='otp'){otpForm.classList.remove('hidden');}
+  }
+
+  // OTP Timer (simple placeholder)
+  let otpTimer = 60;
+  setInterval(()=>{
+    if(otpTimer>0){otpTimer--; document.getElementById('otpTimer').innerText=otpTimer;}
+  },1000);
+</script>
+
 </body>
 </html>
-
